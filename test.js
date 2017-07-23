@@ -1,0 +1,22 @@
+require('chromedriver');
+var webdriver = require('selenium-webdriver');
+var By = webdriver.By;
+var driver = new webdriver.Builder().forBrowser('chrome').build();
+driver.get('http://192.168.75.130:3000/');
+driver.manage().window().maximize();
+driver.findElement({ css: 'body > div.navbar > div > div > ul > li:nth-child(6) > a' }).click();
+driver.findElement({ css: '.input-xlarge' }).sendKeys('abcduxiaolei');
+driver.findElement({ id: 'pass' }).sendKeys('abc4862556');
+driver.findElement({ css: '.span-primary' }).submit();
+
+driver.findElement(By.xpath('//*[@id="create_topic_btn"]/span')).click();
+driver.findElement({ id: 'tab-value' }).click();
+driver.findElement(By.css('#tab-value > option:nth-child(3)')).click();
+driver.findElement({ id: 'title' }).sendKeys('晚上好，大家睡觉了吗？');
+driver.findElement({ css: '.eicon-image' }).click();
+driver.findElement({ name: 'file' }).sendKeys('C://Users//Administrator//Downloads//bird.png');
+driver.sleep(3000);
+driver.findElement({ css: '.CodeMirror-scroll' }).click();
+let exec = driver.findElement({ xpath: '//*[@id="create_topic_form"]/fieldset/div/div/div[2]/div[6]/div[2]' });
+driver.actions().mouseMove(exec).sendKeys('我是一只勤劳的小鸟，你们呢？').perform();
+driver.findElement(By.className('span-primary submit_btn')).submit();

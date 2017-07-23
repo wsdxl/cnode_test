@@ -1,0 +1,21 @@
+require('chromedriver')
+var webdriver = require('selenium-webdriver');
+var driver = new webdriver.Builder().forBrowser('chrome').build();
+var By = webdriver.By;
+driver.get('http://192.168.75.130:3000/');
+driver.manage().window().maximize();
+driver.findElement(By.css('body > div.navbar > div > div > ul > li:nth-child(6) > a')).click();
+driver.findElement(By.id('name')).sendKeys('abcduxiaolei');
+driver.findElement(By.id('pass')).sendKeys('abc4862556');
+driver.findElement(By.css('#signin_form > div.form-actions > input')).submit();
+driver.findElement(By.className('span-success')).click();
+driver.findElement(By.id('tab-value')).click();
+driver.findElement(By.css('#tab-value > option:nth-child(3)')).click();
+driver.findElement(By.id('title')).sendKeys('我们是共产主义接班人');
+driver.findElement(By.css('#create_topic_form > fieldset > div > div > div.editor-toolbar > a.eicon-image')).click();
+driver.findElement(By.name('file')).sendKeys('F://图片//新建文件夹//IMG_20150605_070851.jpg');
+driver.sleep(3000);
+driver.findElement(By.css('#create_topic_form > fieldset > div > div > div.CodeMirror.cm-s-paper > div.CodeMirror-scroll')).click();
+let editor = driver.findElement({ css: '#create_topic_form > fieldset > div > div > div.CodeMirror.cm-s-paper > div.CodeMirror-scroll > div:nth-child(2)' });
+driver.actions().mouseMove(editor).sendKeys("helloworld ....................").perform();
+driver.findElement(By.css('#create_topic_form > fieldset > div > div > div.editor_buttons > input')).submit();
